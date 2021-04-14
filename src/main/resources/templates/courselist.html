@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href = "@{/css/main.css}" rel="stylesheet">
+<head>
+
+<title>Courselist</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+	<h1>Frisbeegolf pelitulokset</h1>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Pelaaja</th>
+				<th>Rata</th>
+				<th>Par</th>
+				<th>Päivä</th>
+				<th>Tulos</th>
+			</tr>
+		</thead>
+
+
+		<tbody>
+			<tr th:each="course : ${courses}">
+				<td th:text="${course.person}"></td>
+				<td th:text="${course.name}"></td>
+				<td th:text="${course.par}"></td>
+				<td th:text="${course.date}"></td>
+				<td th:text="${course.result}"></td>
+				<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${course.id})}">Delete </a></td>
+				<td><a class="btn btn-warning" th:href="@{/edit/{id}(id=${course.id})}">Edit </a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<a href="/addcourse" class="btn btn-success">Add new score</a> <br><br>
+	
+	<form th:action="@{/logout}" method=
+		"post">
+		<input type="submit" value="Sign Out"/>
+		</form>
+	
+</body>
+</html>
