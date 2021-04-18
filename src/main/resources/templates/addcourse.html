@@ -1,37 +1,39 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
 
     <title>Addcourse</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Add course</h1>
-	<div>
-		<form th:object="${course}" th:action="@{save}" action="#" method="post">
-		  	<label for="person">Person</label>
-			<input type="text" id="person" th:field="*{person}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="name">Course name</label>
-			<input type="text" id="name" th:field="*{name}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="par">Par</label>
-			<input type="text" th:field="*{par}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="date">Date</label>
-			<input type="text" th:field="*{date}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="result">Result</label>
-			<input type="text" th:field="*{result}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-
-
-			<br>
-			<input class="btn btn-success" type="submit" value="Save"></input><br>
-			
-		</form>
-		
+   <h2 class="text-center">Lisää Tulos</h2>
+	 <div>
+	   <form th:object="${course}" th:action="@{save}" action="#" method="post">
+		  <div class="row">
+		    <div class="col-md-4 mx-auto">
+				<div class="card">
+					<div class="card-body">
+						<div class="form-group">
+						<label for="person">Pelaaja</label>
+						<input type="text" name="person" required th:field="*{person}" class="form-control">
+						<label for="person">Rata</label>
+						<input type="text" name="course" required th:field="*{name}" class="form-control">
+						<label for="person">Par</label>
+						<input type="text" name="par" required th:field="*{par}" class="form-control">
+						<label for="person">Päivä</label>
+						<input type="date" name="date" required th:field="*{date}" class="form-control">
+						<label for="person">Tulos</label>
+						<input type="text" name="result" required th:field="*{result}" class="form-control">
+						<br>
+						<input type="submit" value="Lähetä" class="btn btn-primary"></input>
+						<a class="btn btn-success" href="/courselist">Tuloslista</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </form>
 	</div>
+
 </body>
 </html>

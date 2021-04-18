@@ -1,8 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
-<link th:href = "@{/css/main.css}" rel="stylesheet">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 <head>
 
 <title>Courselist</title>
@@ -10,8 +9,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 </head>
 <body>
-	<h1>Frisbeegolf pelitulokset</h1>
-	<table class="table table-striped">
+	<h1 style="text-align:center; text-transform: uppercase">Frisbeegolf pelitulokset</h1>
+	
+	<table class="table table-striped table-bordered ">
 		<thead>
 			<tr>
 				<th>Pelaaja</th>
@@ -19,10 +19,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				<th>Par</th>
 				<th>Päivä</th>
 				<th>Tulos</th>
+				<th>Poista</th>
+				<th>Muokkaa</th>
+				<th>
 			</tr>
 		</thead>
-
-
+		
 		<tbody>
 			<tr th:each="course : ${courses}">
 				<td th:text="${course.person}"></td>
@@ -30,18 +32,18 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				<td th:text="${course.par}"></td>
 				<td th:text="${course.date}"></td>
 				<td th:text="${course.result}"></td>
-				<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${course.id})}">Delete </a></td>
-				<td><a class="btn btn-warning" th:href="@{/edit/{id}(id=${course.id})}">Edit </a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger"
+					th:href="@{/delete/{id}(id=${course.id})}">Poista </a></td>
+				<td><a class="btn btn-primary"
+					th:href="@{/edit/{id}(id=${course.id})}">Muokkaa </a></td>
 			</tr>
 		</tbody>
 	</table>
-	
-	<a href="/addcourse" class="btn btn-success">Add new score</a> <br><br>
-	
-	<form th:action="@{/logout}" method=
-		"post">
-		<input type="submit" value="Sign Out"/>
-		</form>
-	
+	<a href="/addcourse" class="btn btn-success">Lisää uusi tulos</a>
+	<br> <br>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" class="btn btn-danger" value="Kirjaudu ulos" />
+	</form>
+
 </body>
 </html>
