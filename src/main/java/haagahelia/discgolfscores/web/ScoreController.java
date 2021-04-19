@@ -68,5 +68,11 @@ public class ScoreController {
 	public String login() {
 		return "login";
 	}
+	
+	@RequestMapping(value = { "/signup" })
+	public String signup() {
+		return "signup";
+	}
+
 
 }
