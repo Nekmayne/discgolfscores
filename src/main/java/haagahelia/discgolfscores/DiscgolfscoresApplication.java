@@ -22,7 +22,6 @@ public class DiscgolfscoresApplication {
 
 			User user1 = new User("user", "$2a$10$a1uN4cRSwIeIDj1l8Z1ZlOADz4CO4EuIa1rLT6zdgpbGyea4D9oa2", "email", "USER");
 			User user2 = new User("admin", "$2a$10$uWfXdetlWLrJFPTH4AHonOO2trGDDZfm7OVUnVyxgGs1C/YD56wHS", "email1", "ADMIN");
-
 			uRepository.save(user1);
 			uRepository.save(user2);
 
